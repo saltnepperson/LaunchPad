@@ -12,4 +12,10 @@ class LaunchPads(SpaceXApi):
 
     def get_all(self):
         res = requests.get('{}/{}'.format(self.host, self.entity_endpoint))
-        return res.json()
+        data = res.json()
+        launchpads = []
+
+        for launchpad in data:
+            launchpads.append(dict((k, launchpad[k]) for k in ['id', 'name', 'status'] if k in launchpad))
+        
+        return json.dumps(launchpads)
