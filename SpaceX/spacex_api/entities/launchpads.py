@@ -18,4 +18,4 @@ class LaunchPads(SpaceXApi):
         for launchpad in data:
             launchpads.append(dict((k, launchpad[k]) for k in ['id', 'name', 'status'] if k in launchpad))
         
-        return json.dumps(launchpads)
+        return launchpads

@@ -6,6 +6,6 @@ class LaunchPadsAdapter(LaunchPads):
         self.adaptee = adaptee()
         pass
 
-    def all(self):
+    def all(self) -> dict:
         launchpads = self.adaptee.get_all()
         return launchpads

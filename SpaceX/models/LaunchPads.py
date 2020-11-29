@@ -13,5 +13,4 @@ class LaunchPads(models.Model):
 
     def all(self):
         data = LaunchPads.objects.all().values('id','name','status')
-        data = json.dumps(list(data))
-        return data
+        return list(data)
