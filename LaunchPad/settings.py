@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'spacex'
+    'spacex.apps.SpacexConfig'
 ]
 
 MIDDLEWARE = [
@@ -77,6 +77,17 @@ WSGI_APPLICATION = 'LaunchPad.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'launchpads_dev',
+        'USER': 'launchpads_user',
+        'PASSWORD': 'thisisasecurepassword',
+        # HOST value has to change according to environment
+        # i.e. <container-name> for Docker or localhost if Django server
+        # is running locally
+        'HOST': 'localhost',
+        'PORT': 5432
+    },
+    'sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
