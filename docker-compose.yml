@@ -12,3 +12,13 @@ services:
     volumes:
       - ./db/postgres_data:/var/lib/postgres
 
+  launchpads-api:
+    build: .
+    container_name: launchpads_api
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+    depends_on:
+      - postgres
