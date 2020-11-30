@@ -7,10 +7,8 @@ services:
     restart: unless-stopped
     ports:
       - 5432:5432
-    environment:
-      POSTGRES_PASSWORD: thisisasecurepassword
-      POSTGRES_USER: launchpads_user
-      POSTGRES_DB: launchpads_dev
+    env_file:
+      - ./LaunchPad/.env
     volumes:
       - ./db/postgres_data:/var/lib/postgres
 
