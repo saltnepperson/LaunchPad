@@ -1,10 +1,11 @@
 from django.urls import path, include
 
-from spacex.views import launchpads
+from spacex.views.database.launchpads import LaunchPadDatabaseList
+from spacex.views.api.launchpads import LaunchPadAPIList
 
 app_name = 'spacex'
 
 urlpatterns = [
-    path('launchpads', launchpads.get_launchpads, name='get-api-launchpads'),
-    path('database/launchpads', launchpads.get_database_launchpads, name='get-database-launchpads')
+    path('launchpads', LaunchPadAPIList.as_view(), name='get-api-launchpads'),
+    path('database/launchpads', LaunchPadDatabaseList.as_view(), name='get-database-launchpads')
 ]

@@ -4,8 +4,6 @@ from spacex.spacex_api.api import SpaceXApi
 
 class LaunchPads(SpaceXApi):
 
-    DEFAULT_COLUMNS = ['id','name','status']
-
     def __init__(self):
         super().__init__()
         self.entity_endpoint = 'launchpads'
