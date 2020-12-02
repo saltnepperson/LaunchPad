@@ -10,7 +10,3 @@ class LaunchPads(models.Model):
 
     def __str__(self):
         return self.name
-
-    def all(self):
-        data = LaunchPads.objects.all().values('id','name','status')
-        return list(data)

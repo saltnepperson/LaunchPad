@@ -9,3 +9,7 @@ class SpaceXApi():
     def __init__(self):
         self.host = '{}://{}/{}'.format(self.PROTOCOL, self.BASE_URL, self.API_VERSION)
         pass
+
+    # GET wrapper
+    def get(self, endpoint):
+        return requests.get('{}/{}'.format(self.host, endpoint))

@@ -1,8 +1,9 @@
 from spacex.spacex_api.entities.launchpads import LaunchPads
+from spacex.models.LaunchPads import LaunchPads as DatabaseLaunchPads
 
-class LaunchPadsAdapter(LaunchPads):
+class LaunchPadsAdapter(DatabaseLaunchPads):
     
-    def __init__(self, adaptee):
+    def __init__(self, adaptee: LaunchPads):
         self.adaptee = adaptee()
         pass
 
