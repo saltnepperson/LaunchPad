@@ -13,3 +13,19 @@ class LaunchPads(SpaceXApi):
         res = self.get(self.entity_endpoint)
         data = res.json()
         return data
+
+    def query(self, name=None, status=None):
+        body = {
+            'query': {},
+            'options': {}
+        }
+
+        if name:
+            body['query']['name'] = name
+        elif status:
+            body['query']['status'] = status
+
+        res = self.post('{}/query'.format(self.entity_endpoint), body=body)
+        data = res.json()
+
+        return data

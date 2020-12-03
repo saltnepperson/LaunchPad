@@ -7,6 +7,12 @@ class LaunchPadsAdapter(DatabaseLaunchPads):
         self.adaptee = adaptee()
         pass
 
-    def all(self) -> dict:
-        launchpads = self.adaptee.get_all()
-        return launchpads
+    def all(self, **kwargs):
+        if kwargs['status']:
+            data = self.adaptee.query(status=kwargs['status'])
+        elif kwargs['name']:
+            data = self.adaptee.query(name=kwargs['name'])
+        else:
+            data = self.adaptee.get_all()
+
+        return data['docs'] if 'docs' in data else data
